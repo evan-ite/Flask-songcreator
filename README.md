@@ -41,6 +41,8 @@ can be used as inspiration for songwriters and musicians.
   - `static/`: Holds static assets such as CSS, JavaScript and image files.
     - `images/`: Holds image files.
     - `javascript/`: Holds javascript files.
+    - `styles.css`: Styleguide for all html files.
+    - `spinner.css`: Style guide for spinner.
   - `song_files/`: Generated PDF for user to download.
   - `test/`: Output that can be used if API is not (yet) working.
   - `templates/`: Contains HTML templates for rendering the views.
