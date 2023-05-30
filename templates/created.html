@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Song
+{% endblock %}
+
+{% block head %}
+    <script src="{{ url_for('static', filename='../static/javascript/savebtn.js') }}"></script>
+    <script src="{{ url_for('static', filename='../static/javascript/download.js') }}"></script>
+    <script type="text/javascript">
+        SONG_ID = {{song_id}}
+        {% if session["user_id"] %}
+            LOGGED_IN = true
+        {% else %}
+            LOGGED_IN = false
+        {% endif %}
+        console.log(LOGGED_IN)
+     </script>
+{% endblock %}
+
+{% block main %}
+
+    <div class="action-bar">
+        <div class="action-icons">
+            <!-- Save/delete song -->
+            <button type="submit" class="save-button">
+                <img class="save-icon" src="../static/images/save.png" alt="Save song">
+            </button>
+
+            <!-- Download PDF -->
+            <button type="submit" class="download-button">
+                <img id="dwnld-btn" class="download-icon" src="../static/images/download.png" alt="Download song">
+            </button>
+        </div>
+
+        <a id="try-again-btn" href="/" class="btn btn-primary">Try again!</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2> {{song['title']}}</h2>
+
+    <div class="song-info">
+        <text> key: {{song["key"]}} <br>
+            genre: {{song["genre"]}} <br>
+            mood: {{song["mood"]}} <br>
+        </text>
+    </div>
+
+    <div class="spacer"></div>
+
+    {% for chord in song["chords"] %}
+        <text class="chords"> {{chord}} </text>
+    {% endfor %}
+
+    <div class="spacer"></div>
+
+    <div class="song-lyrics">
+        {% for element in song["lyrics"] %}
+            <text class="chords"> {{element["chord"]}} <br> </text>
+            <text class="lyrics-line"> {{element["line"]}} <br> </text>
+        {% endfor %}
+    </div>
+{% endblock %}

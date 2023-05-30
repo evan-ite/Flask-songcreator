@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %}
+<script src="../static/javascript/spinner.js"></script>
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="form-body">
+        <img class="header-text" src="static/images/create.png" alt="Create your song!">
+        <form action="/create" method="post">
+
+            <div class="mb-3 creating">
+                <label for="key"> What key would you like your song to be in? </label>
+                <select name="key" class="select-key">
+                    <option value="" disabled selected>Select key</option>
+                    {% for key in keys %}
+                        <option value="{{key}}">{{key}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3 creating">
+                <label for="genre"> What genre would you like your song to be in? </label>
+                <select name="genre" class="select-genre">
+                    <option value="" disabled selected>Select genre</option>
+                    {% for genre in genres %}
+                        <option value="{{genre}}">{{genre}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3 creating">
+                <label for="mood"> What's your mood? </label>
+                <input class="form-control" name="mood" placeholder="mood" type="text">
+            </div>
+            <div class="mb-3 creating">
+                <label for="mood"> What should your song be about? </label>
+                <input class="form-control" name="subject" placeholder="subject" type="text">
+            </div>
+                <button id="create-btn" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+
+
+    <div class="spinner">
+        <link href="../static/spinner.css" rel="stylesheet">
+        <li class="spinner-list">
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <text id="loading" > Generating your song... </text>
+            <div class="content">
+                <div class="bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                </div>
+                <div class="bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                </div>
+            </div>
+        </li>
+    </div>
+
+    <div class="spinner-spacer"></div>
+{% endblock %}

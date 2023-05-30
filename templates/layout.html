@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link href="../static/styles.css" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+        <!-- jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <link rel="icon" href="../static/images/sc-icon.png" type="png">
+
+        <title>Songcreator: {% block title %}{% endblock %}</title>
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+
+      <div class="navbar">
+        <nav class="navbar bg-body-tertiary static-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <img src="../static/images/logo.png" alt="Song creater logo">
+            </a>
+            <button id="more" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <img src="../static/images/more.png" alt="Button Image">
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Create a Song</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      How Does It Work?
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a id="about" class="dropdown-item" href="/about">About</a></li>
+                      <li>
+                      </li>
+                      <li><a id="contact" class="dropdown-item" href="/contact">Contact</a></li>
+                    </ul>
+                  </li>
+                  {% if session["user_id"] %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/mysongs">My Songs</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/register">Register</a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="horizontal-line"></div>
+
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="flash-message" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+            <script>
+              $(document).ready(function() {
+                setTimeout(function() {
+                  $('.flash-message').slideUp();
+                }, 1500);
+              });
+            </script>
+        {% endif %}
+
+        <main class="container-fluid py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+
+    </body>
+
+    <footer class="mb-5 small text-center">
+      <div class="spacer"></div>
+      Data provided by https://openai.com/
+  </footer>
+
+</html>

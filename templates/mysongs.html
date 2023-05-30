@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Songs
+{% endblock %}
+
+{% block main %}
+    <img class="header-text" src="static/images/mysongs.png" alt="My songs">
+
+    <ul >
+        {% if my_songs %}
+            <div class="my-songs">
+                {% for song in my_songs %}
+                    <li class="songs-list-item">
+                        <a class="song-link" href="{{ url_for('song', id = song.id) }}">
+                            <text class="song-title"> {{ song.title}} <br> </text>
+                            <text> Key: {{song.key}} <br> Genre: {{song.genre}}</text>
+                        </a>
+                        <div class="horizontal-divider"></div>
+                    </li>
+
+            {% endfor %}
+            </div>
+            {% else %}
+                <div class="no-songs">
+                    <text class="nothing-saved"> You have no songs saved yet...</text>
+                    <a href="/" class="btn btn-primary">Generate a song!</a>
+                </div>
+        {% endif %}
+    </ul>
+{% endblock %}
