@@ -62,10 +62,10 @@ can be used as inspiration for songwriters and musicians.
 
 ## Screenshots
 
-<img src="static/images/screenshot-index.png" width="55%">
-<img src="static/images/screenshot-navbar.png" width="55%">
-<img src="static/images/screenshot-created.png" width="55%">
-<img src="static/images/screenshot-mysongs.png" width="55%">
+<img src="static/images/screenshot-index.png" width="65%">
+<img src="static/images/screenshot-navbar.png" width="65%">
+<img src="static/images/screenshot-created.png" width="65%">
+<img src="static/images/screenshot-mysongs.png" width="65%">
 
 
 ## Contributing
